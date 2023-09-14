@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            height: 120vh;
+            justify-content: center;
+            background-color: lightgray;
+            box-sizing: border-box;
+           
+        }
+        .container form{
+            display: flex;
+            width: 25%;
+            background-color: whitesmoke;
+            justify-content: center;
+            padding: 20px 50px;
+            /* border: 2px solid black; */
+            box-shadow: 0 5px 6px 0 #76767663;
+        }
+        .container form table{
+            width: 50%;
+        }
+        .container form table tr td label{
+            font-size: 20px;
+            font-weight: bolder;
+            color: black;
+        }
+        .container table tr td{
+            padding: 20px;
+        }
+        .container table tr td button{
+            padding: 10px 20px;
+            border-radius: 20px;
+            background-color:rgba(15, 15, 233, 0.774);
+            font-size: large;
+            margin-left: 20%;
+            border: none;
+            transition: .4s;
+            font-weight: bold;
+        }
+        .container table tr td button:hover{
+                background:  green;
+                color: black;
+                box-shadow: 0 5px 6px 0 #76767663;
+                cursor: pointer;
+                
+        }
+        
+        .container table tr td button a{
+            color: black;
+            text-decoration: none;
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <center><h1>create A new account</h1></center>
+        <form action="" name="registration"  onsubmit="return formValidation()">
+          <table>
+            <tr>
+              <td><label for="name">Name:</label></td>
+              <td><input type="text" name="name" id="name" placeholder="your name"></td>
+            </tr>
+            <tr>
+              <td><label for="email">Email:</label></td>
+              <td><input type="text" name="email" id="email" placeholder="your email"></td>
+            </tr>
+            <tr>
+              <td><label for="password">Password:</label></td>
+              <td><input type="password" name="password" id="password"></td>
+            </tr>
+            <tr>
+              <td><label for="phoneNumber">Phone Number:</label></td>
+              <td><input type="number" name="phoneNumber" id="phoneNumber"></td>
+            </tr>
+            <tr>
+              <td><label for="gender">Gender:</label></td>
+              <td>Male: <input type="radio" name="gender" value="male">
+                Female: <input type="radio" name="gender" value="female">
+            </td>
+            </tr>
+            <tr>
+              <td><label for="language">language</label></td>
+              <td>
+                <select name="language" id="language">
+                  <option value="">Select language</option>
+                  <option value="English">English</option>
+                  <option value="Spanish">Spanish</option>
+                  <option value="Hindi">Hindi</option>
+                  <option value="Arabic">Arabic</option>
+                  <option value="Russian">Russian</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+                <td><label for="agree">Agree to terms</label></td>
+                <td><input type="checkbox" name="agree" id="agree"></td>
+              </tr>
+            <tr>
+              <td colspan="2"><button type="submit"><a href="login.html" target="_blank">create account</a></button></td>
+            </tr>
+          </table>
+        </form>
+      </div>
+      <script>
+            const name = document.getElementById("name");
+            const email = document.getElementById("email");
+            const password = document.getElementById("password");
+            const phoneNumber = document.getElementById("phoneNumber");
+            const gender = document.registration;
+            const language = document.getElementById("language");
+            let checkbox = document.getElementById("agree");
+            function formValidation() {
+
+            if (name.value.length < 2 || name.value.length > 20) {
+                alert("Name length should be more than 2 and less than 21");
+                name.focus();
+                return false;
+            }
+            if (!email.value.match( /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/))  {
+                alert("Please enter a valid email!");
+                email.focus();
+                return false;
+            }
+            if (!password.value.match(/^.{5,15}$/)) {
+                alert("Password length must be between 5-15 characters!");
+                password.focus();
+                return false;
+            }
+            if (!phoneNumber.value.match(/^[1-9][0-9]{9}$/)) {
+                alert("Phone number must be 10 characters long number");
+                phoneNumber.focus();
+                return false;
+            }
+            if (gender.gender.value === "") {
+                alert("Please select your gender!");
+                return false;
+            }
+            if(!checkbox.checked){
+                alert("Please select the agree checkbox!");
+                return false;
+            }
+            if (language.value === "") {
+                alert("Please select your language!")
+                return false;
+            }
+            window.location.assign("login.html");
+            return true;
+            }
+      </script>
+</body>
+</html>
